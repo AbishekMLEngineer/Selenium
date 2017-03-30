@@ -12,34 +12,39 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
-public class Base_Class {
-	WebDriver driver;
+public class Base_Class extends ScreenShot {
+	static WebDriver driver;
 	String str;
 	By SignIn= By.xpath(".//*[@class='_2k0gmP'][@data-reactid='32']");
 	By username = By.xpath("//input[@class='_2zrpKA']");
 	By Continue = By.xpath("//button[@class ='_2AkmmA _1LctnI _7UHT_c']");
-	
+	Base_Class obj;
+
+	public Base_Class(WebDriver driver2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@BeforeTest
-	public void Try2()
+	public  WebDriver  SettingDriver()
 	{
 		System.setProperty("webdriver.chrome.driver","C://chromedriver_win32(1)//chromedriver.exe");
 		 driver = new ChromeDriver();
+		 return driver;
 	}
+
 	@Test
 	public void login(){
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		driver.get("https://www.flipkart.com/");
 		driver.findElement(SignIn).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(username));
-		driver.findElement(username).click();
+		driver.findElement(username).sendKeys("");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(Continue));
 		driver.findElement(Continue).click();
-		
-		
-		
-		
-		
+		obj = new Base_Class(driver);
+		//obj.CaptureScreenShot(driver);
 	}
+	
 
 }
 
