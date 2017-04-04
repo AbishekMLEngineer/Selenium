@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -15,13 +16,43 @@ import org.testng.annotations.Test;
 public class Base_Class extends ScreenShot {
 	static WebDriver driver;
 	String str;
+	@FindBy(xpath ="//*[@class='_2k0gmP'][@data-reactid='32')")
+	WebElement username1;	
+	
+	@FindBy(xpath ="//a[contains(@href,'https://www.lampsplus.com/secure/account/sign-in.aspx?ReturnUrl=%2f')]")
+	
+	private static WebElement element;
+	public static WebElement getSignINLamps2(WebDriver driver){
+		element = driver.findElement(By.xpath("//a[contains(@href,'https://www.lampsplus.com/secure/account/sign-in.aspx?ReturnUrl=%2f')]"));
+		return element;
+	}
+	public static WebElement EnterUserName(WebDriver driver){
+		element = driver.findElement(By.xpath("//input[@type ='text'][@name ='txtEmailorRewards']"));
+		return element;
+	}
+	public static WebElement EneterPassword(WebDriver driver){
+		element = driver.findElement(By.xpath("//input[@type ='password'][@name ='txtPassword']"));
+		return element;
+	}
+	public static WebElement Submit(WebDriver driver){
+		element = driver.findElement(By.xpath("//input[@type ='submit'][@id ='txtSignIn']"));
+		return element;
+	}
+	
+	
+	
+	//WebElement ele1 =
 	By SignIn= By.xpath(".//*[@class='_2k0gmP'][@data-reactid='32']");
 	By username = By.xpath("//input[@class='_2zrpKA']");
 	By Continue = By.xpath("//button[@class ='_2AkmmA _1LctnI _7UHT_c']");
 	Base_Class obj;
+	
+	public Base_Class(){
+		
+	}
 
 	public Base_Class(WebDriver driver2) {
-		// TODO Auto-generated constructor stub
+		this.driver =driver2;
 	}
 
 	@BeforeTest
@@ -34,6 +65,7 @@ public class Base_Class extends ScreenShot {
 
 	@Test
 	public void login(){
+		
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		driver.get("https://www.flipkart.com/");
 		driver.findElement(SignIn).click();

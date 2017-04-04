@@ -32,7 +32,7 @@ public class Properties123 {
 					e.printStackTrace();
 				}
 		//System.out.println(chromepath);
-				ClickElement.clickbyid(driver, "persistent");
+				//ClickElement.clickbyid(driver, "persistent");
 		
 		}
 			public String getchromepath(){
@@ -56,10 +56,16 @@ public class Properties123 {
 			
 			
 			
+			String strxyz;
 			
-			
-			
-			
+			public String getUserNameLamps1(){
+				strxyz= pro.getProperty("UserNameLamps");
+				return strxyz;
+			}
+			public String getPasswordLamps1(){
+				strxyz = pro.getProperty("PasswordLamps");
+				return strxyz;
+			}
 			
 			
 }
